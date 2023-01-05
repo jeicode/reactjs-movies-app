@@ -9,11 +9,9 @@ export function useMovies({category}){
         setLoading(true);
         async function getMovies() {
             const { results } = await GetMovies({ category, page })
-            setTimeout(() => {
-                if (page !== 1 ) setMovies(values => [... new Set(values.concat(results))])
-                else setMovies(results);
-                setLoading(false);
-            }, 100);
+            if (page !== 1 ) setMovies(values => [... new Set(values.concat(results))])
+            else setMovies(results);
+            setLoading(false);
         }
         getMovies()
 

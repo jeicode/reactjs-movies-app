@@ -10,7 +10,7 @@ import LazyFooter from 'shared/components/footer';
 
 function App() {
   return (
-    <div className="app">
+    <div className="app"> 
       <Header />
       <section className="container-fluid main">
           <Route path="/" component={Home} />

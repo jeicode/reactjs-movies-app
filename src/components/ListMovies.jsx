@@ -10,26 +10,23 @@ import ItemMovie from "./ItemMovie"
 function ListMovies(params) {
     const category = params.params?.category || params?.category
     const { movies, loading } = useMovies({ category })
-    const {setPage} = useContext(MoviesContext);
-    const {show:nextPage, eleRef} = useElementIsIntersecting({autoDisconnect:false})
+    const { setPage } = useContext(MoviesContext);
+    const { show: nextPage, eleRef } = useElementIsIntersecting({ autoDisconnect: false })
 
-    useEffect( () => {
-        nextPage && setPage(value => value+1);
-    }, [setPage,nextPage])
+    useEffect(() => {
+        nextPage && setPage(value => value + 1);
+    }, [setPage, nextPage])
 
     return (
         <>
-            {loading ? <Loader /> :
-                <>
-                    <h2>{params.title || 'Categorias: ' + category}</h2>
-                    <div className="list-movies">
-                        {
-                            movies?.map(movie => <ItemMovie movie={movie} />)
-                        }
-                    </div>
-                    <div className="visor" ref={eleRef}></div>
-                </>
-            }
+            <h2>{params.title || 'Categorias: ' + category}</h2>
+            <Loader className={!loading && 'd-none'}/>
+            <div className={`list-movies ${loading && 'd-none'}`}>
+                {
+                    movies?.map(movie => <ItemMovie key={movie['id']} movie={movie} />)
+                }
+            </div>
+            <div className="visor" ref={eleRef}></div>
 
         </>
     )

@@ -3,9 +3,9 @@ import { Link } from 'wouter'
 
 const IMG_URL = 'https://image.tmdb.org/t/p/w500/'
 
-export default function ItemMovie({movie}) {
+function ItemMovie({movie}) {
     return (
-        <div key={movie['id']} className="movie">
+        <div className="movie">
             <div className="container-img">
                 <img className="card-img-top" src={IMG_URL + movie['poster_path']} alt="" />
             </div>
@@ -19,3 +19,8 @@ export default function ItemMovie({movie}) {
         </div>
     )
 }
+
+
+export default React.memo(ItemMovie, (prevProps, nextProps) => {
+    return prevProps.movie['id'] !== nextProps.movie['id']
+});

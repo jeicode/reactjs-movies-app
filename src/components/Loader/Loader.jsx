@@ -2,16 +2,16 @@ import React from "react";
 import ContentLoader from 'react-content-loader'
 import './Loader.css'
 
-export default function Loader(props) {
+export default function Loader({className}) {
 
   return (
-    <ContentLoader className="loader-container"
+    <ContentLoader 
+      className={`loader-container ${className}`}
       width={'100%'}
       height={'100vh'}
       viewBox="0 0 800 575"
       backgroundColor="black"
       foregroundColor="#2b2d2b"
-      {...props}
     >
       <rect className="item-loader" x="12" y="58" rx="2" ry="2" />
       <rect className="item-loader" x="240" y="57" rx="2" ry="2" />
