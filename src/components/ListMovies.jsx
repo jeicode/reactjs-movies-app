@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react"
 import '../App.css'
 import { useMovies } from "../hooks/useMovies"
-import Loader from "./Loader"
+import Loader from "./Loader/Loader"
 import { MoviesContext } from "context/MoviesContext"
 import useElementIsIntersecting from "hooks/useElementIsIntersecting"
 import ItemMovie from "./ItemMovie"
